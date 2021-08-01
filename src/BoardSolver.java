@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardSolver {
+    /*
+     * Evaluates all possible moves and returns the move that clears the most gems
+     */
     public static Move getOptimalMove(GameBoard originalState) {
         List<Move> potentialMoves = new ArrayList<>();
         for (int y = 7; y >= 0; y--) {
@@ -40,6 +43,8 @@ public class BoardSolver {
                     }
                     if (move == null)
                         continue;
+                    // If this is the best move we've found so far, clear out the potential list and add this one
+                    // Otherwise if this move is as good as our previous best, add it to the list
                     if (potentialMoves.isEmpty() || move.getNumCleared() > potentialMoves.get(0).getNumCleared()) {
                         potentialMoves.clear();
                         potentialMoves.add(move);
@@ -83,6 +88,7 @@ public class BoardSolver {
                 }
             }
         }
+        System.out.println("Optimal move found: " + optimalMove.toString());
         return optimalMove;
     }
 }

@@ -4,6 +4,7 @@ public class Move {
     Gem gem1;
     Gem gem2;
     int numCleared;
+    int numClearedWithCascade;
     int levelCleared;
     Point gem1Position;
     Point gem2Position;
@@ -68,5 +69,23 @@ public class Move {
 
     public void setLevelCleared(int levelCleared) {
         this.levelCleared = levelCleared;
+    }
+
+    public int getNumClearedWithCascade() {
+        return numClearedWithCascade;
+    }
+
+    public void setNumClearedWithCascade(int numClearedWithCascade) {
+        this.numClearedWithCascade = numClearedWithCascade;
+    }
+
+    @Override
+    public String toString() {
+        return "Move{" +
+                "numCleared=" + numCleared +
+                ", numClearedWithCascade=" + numClearedWithCascade +
+                ", levelCleared=" + levelCleared +
+                ", gem1Position=" + gem1Position +
+                ", gem2Position=" + gem2Position;
     }
 }

@@ -72,7 +72,6 @@ public class GameBoard {
         }
     }
 
-
     private void calculateClear() {
         for (int y = 7; y >= 0; y--) {
             for (int x = 0; x < 8; x++) {
@@ -81,10 +80,11 @@ public class GameBoard {
                 if (numChained > numCleared || (numChained == numCleared && newLevelCleared > levelCleared)) {
                     numCleared = numChained;
                     levelCleared = newLevelCleared;
-
                 }
             }
         }
+        if (numCleared <=2)
+            numCleared=0;
     }
 
     // Fills in holes in the board with random gems
@@ -396,7 +396,10 @@ public class GameBoard {
 
         // Count the clears for the original swap
         calculateClear();
-        int numCleared1 = Integer.valueOf(this.numCleared) ;
+        Integer numClearedFromOriginalMove = this.numCleared;
+        Integer levelClearedFromOriginalMove = this.levelCleared;
+        Integer maxNumClearedFromCascade = this.numCleared;
+
         // Clear the matching gems
         executeClear();
 
@@ -421,14 +424,16 @@ public class GameBoard {
                 executeDrop();
                 populateBoard();
                 calculateClear();
+                maxNumClearedFromCascade = Math.max(this.numCleared, maxNumClearedFromCascade);
             }
         }
 
-        move.setLevelCleared(this.levelCleared);
-        move.setNumCleared(this.numCleared);
+        move.setLevelCleared(levelClearedFromOriginalMove);
+        move.setNumClearedWithCascade(maxNumClearedFromCascade);
+        move.setNumCleared(numClearedFromOriginalMove);
         move.setFinalBoard(this);
         if (!simulationMode) {
-            if (numCleared1 < this.numCleared && this.numCleared > 3) {
+            if (levelClearedFromOriginalMove < this.numCleared && this.numCleared > 3) {
                 System.out.println("Fancy move found " + gem1Location + " " + gem2Location + " for " + numCleared);
             } else if (this.numCleared > 3) {
                 System.out.println("Good move found " + gem1Location + " " + gem2Location + " for " + numCleared);

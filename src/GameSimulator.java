@@ -1,29 +1,23 @@
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class GameSimulator {
-    private static final int NUM_SIMS = 10000;
-    public static void main(String[] args) throws Exception {
-        List<BufferedImage> images = new ArrayList<>();
-        List<ImageProcessThread> threads;
-        Map<BufferedImage, List<Point>> pointMap = new HashMap<>();
+    private static final int NUM_SIMS = 100;
+    public static void main(String[] args) {
         List<Integer> gameTurns = new ArrayList<>();
         for (int i = 0; i < NUM_SIMS; i++) {
-            int turnCount = 12;
+            int turnCount = 8;
             int turnsSurvived = 0;
             GameBoard board = new GameBoard();
             while (turnCount > 0) {
                 turnsSurvived++;
-                System.out.println(board);
+                //System.out.println(board);
                 Move move = BoardSolver.getOptimalMove(board);
-                System.out.println("Optimal Move: Swap " + move.getGem1Position() + " and " + move.getGem2Position() + " to clear " + move.getNumCleared() + " gems.");
-                if (move.getNumCleared() < 4)
+                // You lose a turn on a 3 match
+                if (move.getNumCleared() == 3)
                     turnCount--;
-                if (move.getNumCleared() > 4)
+                // You gain a turn on a 5+ match
+                if (move.getNumCleared() >= 5)
                     turnCount++;
                 board = move.getFinalBoard();
             }
