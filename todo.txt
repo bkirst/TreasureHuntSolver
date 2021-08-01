@@ -1,0 +1,20 @@
+Features/Bugs
+- Simulation is getting way too many turns
+	- Make sure we're dropping the first four gem types not 3
+	- I'm not sure if the cascade clear counts after the first one are matching actual game behavior
+- Need to implement board shuffle on 0 match case
+- Multithread simulation
+- Improve image matching speed
+	- Maybe evaluate using an actual library
+- Statistical move evaluation based on chance of hitting a 4 or 5 cascade
+- Machine learning integration investigation
+
+Maintenance
+- log4j integration and log levels
+- unit test library and convert existing tests
+- unit test coverage for all the other classes
+
+Meta
+- Readme
+- Youtube video
+
