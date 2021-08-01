@@ -22,19 +22,20 @@ public class ImageMatcher {
                     int matchCount = 0;
                     for (int ii = 0; ii < subimage.getWidth(); ii++) {
                         for (int jj = 0; jj < subimage.getHeight(); jj++) {
+                            if (toReturn.size() == 1)
+                                maxHeight = Math.min(image.getHeight() - subimage.getHeight(), j + 1024);
                             if (subimage.getRGB(ii, jj) == image.getRGB(i + ii, j + jj))
                                 matchCount++;
+                            if (matchCount > (subimage.getWidth() * subimage.getHeight() * .05))
+                            {
+                                toReturn.add(new Point(i, j));
+                                j += 40;
+                                continue nextPixel;
+                            }
                             if (ii * jj + jj > 25 && matchCount < (ii * jj + jj) * .05 )
                                 continue nextPixel;
                         }
                     }
-                    if (matchCount > (subimage.getWidth() * subimage.getHeight() * .05))
-                    {
-                        toReturn.add(new Point(i, j));
-                        j += 40;
-                    }
-                    if (toReturn.size() == 1)
-                        maxHeight = Math.min(image.getHeight() - subimage.getHeight(), j + 1024);
                 }
             }
         }

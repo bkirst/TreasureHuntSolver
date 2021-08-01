@@ -28,7 +28,7 @@ public class TestDriver {
         GameBoard board = createGameBoard(topRow5Match);
         Move optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getNumCleared() != 5)
-            System.out.println("topRow5Match failure." + failures++);
+            System.out.println("topRow5Match failure. " + ++failures);
 
         System.out.println("\n");
         int[][] middle5L = new int[][]{
@@ -46,7 +46,7 @@ public class TestDriver {
         board = createGameBoard(middle5L);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getNumCleared() != 5)
-            System.out.println("middle5L failure." + failures++);
+            System.out.println("middle5L failure. " + ++failures);
 
         System.out.println("\n");
         int[][] bottomRow5Match = new int[][]{
@@ -64,7 +64,7 @@ public class TestDriver {
         board = createGameBoard(bottomRow5Match);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getNumCleared() != 5)
-            System.out.println("bottomRow5Match failure." + failures++);
+            System.out.println("bottomRow5Match failure. " + ++failures);
 
         System.out.println("\n");
         int[][] isStableTest = new int[][]{
@@ -83,7 +83,7 @@ public class TestDriver {
         board.executeClear();
         System.out.println(board);
         if (!board.isStable())
-            System.out.println("isStableTest failure." + failures++);
+            System.out.println("isStableTest failure. " + ++failures);
 
         System.out.println("\n");
         int[][] isNotStableTest = new int[][]{
@@ -102,7 +102,7 @@ public class TestDriver {
         board.executeClear();
         System.out.println(board);
         if (board.isStable())
-            System.out.println("isNotStableTest failure." + failures++);
+            System.out.println("isNotStableTest failure. " + ++failures);
 
         System.out.println("\n");
         int[][] fancyMoveTest = new int[][]{
@@ -120,7 +120,7 @@ public class TestDriver {
         board = createGameBoard(fancyMoveTest);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getNumCleared() != 5)
-            System.out.println("fancyMoveTest failure." + failures++);
+            System.out.println("fancyMoveTest failure. " + ++failures);
 
         System.out.println("\n");
         int[][] dropMoveTest = new int[][]{
@@ -138,7 +138,7 @@ public class TestDriver {
         board = createGameBoard(dropMoveTest);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getNumCleared() != 4)
-            System.out.println("dropMoveTest failure." + failures++);
+            System.out.println("dropMoveTest failure. " + ++failures);
 
         System.out.println("\n");
         int[][] weirdScenario = new int[][]{
@@ -155,7 +155,7 @@ public class TestDriver {
         board = createGameBoard(weirdScenario);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getNumCleared() != 3)
-            System.out.println("weirdScenario failure." + failures++);
+            System.out.println("weirdScenario failure. " + ++failures);
 
         System.out.println("\n");
         int[][] weirdScenario2 = new int[][]{
@@ -172,7 +172,7 @@ public class TestDriver {
         board = createGameBoard(weirdScenario2);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getNumCleared() != 4)
-            System.out.println("weirdScenario2 failure." + failures++);
+            System.out.println("weirdScenario2 failure. " + ++failures);
 
         System.out.println("\n");
         int[][] boring3Match = new int[][]{
@@ -189,7 +189,7 @@ public class TestDriver {
         board = createGameBoard(boring3Match);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getGem1Position().getY() < 7)
-            System.out.println("boring3Match failure." + failures++);
+            System.out.println("boring3Match failure. " + ++failures);
 
         System.out.println("\n");
         int[][] top4Match = new int[][]{
@@ -206,7 +206,7 @@ public class TestDriver {
         board = createGameBoard(top4Match);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getGem1Position().getY() > 1)
-            System.out.println("top4Match failure." + failures++);
+            System.out.println("top4Match failure. " + ++failures);
 
 
         System.out.println("\n");
@@ -224,7 +224,7 @@ public class TestDriver {
         board = createGameBoard(boring3Match2);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getGem1Position().getY() < 3)
-            System.out.println("boring3Match2 failure." + failures++);
+            System.out.println("boring3Match2 failure. " + ++failures);
 
         System.out.println("\n");
         int[][] lowSide3Match = new int[][]{
@@ -241,7 +241,7 @@ public class TestDriver {
         board = createGameBoard(lowSide3Match);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getGem1Position().getY() > 3)
-            System.out.println("lowSide3Match failure." + failures++);
+            System.out.println("lowSide3Match failure. " + ++failures);
 
         System.out.println("\n");
         int[][] noValidMoves = new int[][]{
@@ -258,7 +258,7 @@ public class TestDriver {
         board = createGameBoard(noValidMoves);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getNumCleared() !=0)
-            System.out.println("noValidMoves failure." + failures++);
+            System.out.println("noValidMoves failure. " + ++failures);
 
         System.out.println("\n");
         int[][] tooManyMatchedBug = new int[][]{
@@ -275,7 +275,7 @@ public class TestDriver {
         board = createGameBoard(tooManyMatchedBug);
         optimalMove = BoardSolver.getOptimalMove(board);
         if (optimalMove.getNumCleared() >5)
-            System.out.println("tooManyMatchedBug failure." + failures++);
+            System.out.println("tooManyMatchedBug failure. " + ++failures);
 
 
         System.out.println("\nTest Failures: " + failures);

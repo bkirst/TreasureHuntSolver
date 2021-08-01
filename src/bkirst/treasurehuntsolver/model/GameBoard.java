@@ -398,9 +398,7 @@ public class GameBoard {
 
         // Count the clears for the original swap
         calculateClear();
-        Integer numClearedFromOriginalMove = this.numCleared;
-        Integer levelClearedFromOriginalMove = this.levelCleared;
-        Integer maxNumClearedFromCascade = this.numCleared;
+
 
         // Clear the matching gems
         executeClear();
@@ -417,6 +415,11 @@ public class GameBoard {
         executeClear();
         executeDrop();
         calculateClear();
+
+        Integer numClearedFromOriginalMove = this.numCleared;
+        Integer levelClearedFromOriginalMove = this.levelCleared;
+        Integer maxNumClearedFromCascade = this.numCleared;
+
         if (simulationMode) {
             populateBoard();
             calculateClear();
